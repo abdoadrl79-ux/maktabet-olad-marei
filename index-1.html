@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#174c3c"><title>مكتبة أولاد مرعي</title>
+<style>
+:root{--g:#174c3c;--g2:#236b50;--gold:#e9b949;--ink:#24332d;--muted:#718078;--line:#e7ece8}
+*{box-sizing:border-box}body{margin:0;background:#f6f8f5;color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+header{background:linear-gradient(120deg,#123b30,#236b50);color:white;padding:22px 5vw 28px}.top{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border-radius:16px;background:#fff;color:var(--g);display:grid;place-items:center;font-size:29px}h1{font-size:clamp(23px,4vw,34px);margin:0 0 5px}.tag{margin:0;color:#dcebe3;font-size:14px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.headbtn{border:1px solid #ffffff70;color:white;background:#ffffff18;border-radius:13px;padding:11px 14px;font-weight:bold;cursor:pointer}
+.hero{max-width:1100px;margin:26px auto 0;display:flex;align-items:center;justify-content:space-between;gap:20px}.hero h2{font-size:clamp(22px,4vw,32px);margin:0 0 8px}.hero p{margin:0;color:#e3eee8;line-height:1.8}.hero .book{font-size:65px}
+main{max-width:1100px;margin:24px auto;padding:0 16px}.tools{display:flex;gap:10px;margin-bottom:18px}.search{flex:1;min-width:190px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;background:white}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid var(--line);background:white;color:var(--g);border-radius:999px;padding:9px 14px;cursor:pointer;font:inherit}.filter.active{background:var(--g);color:white}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:18px 0}.sectionhead h3{margin:0;font-size:20px}.hint{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px}.product{background:white;border:1px solid var(--line);border-radius:16px;padding:13px;box-shadow:0 3px 12px #163c2b08;display:flex;flex-direction:column;min-height:210px}
+.pic{height:100px;border-radius:12px;background:#fffaf0;display:grid;place-items:center;font-size:43px;margin-bottom:11px;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}
+.product h4{margin:0 0 6px;font-size:15px}.product .desc{font-size:12px;color:var(--muted);margin:0 0 10px;line-height:1.5}.price{font-weight:bold;color:var(--g);margin-top:auto;margin-bottom:10px}.add,.send,.primary{border:0;background:var(--g);color:white;padding:10px;border-radius:10px;font:inherit;cursor:pointer}.add:hover,.primary:hover{background:var(--g2)}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:24px 0}.panel h3{margin:0 0 14px}.cartrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.qty{display:flex;align-items:center;gap:8px}.qty button{width:27px;height:27px;border:1px solid var(--line);background:white;border-radius:8px;cursor:pointer}.total{display:flex;justify-content:space-between;font-size:18px;font-weight:bold;margin:16px 0}
+.fields{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.fields input,.fields textarea,.adminform input,.adminform select,.adminform textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;background:white}.fields textarea{grid-column:1/-1;min-height:75px}.send{width:100%;background:#16834b;padding:14px;font-weight:bold}.empty{color:var(--muted);padding:10px 0}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:25px 12px}
+#admin{display:none}.adminbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.adminform{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:15px 0}.adminform textarea{min-height:70px}.adminform .wide{grid-column:1/-1}.adminlist{display:grid;gap:8px}.adminitem{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:12px;padding:10px}.adminitem small{display:block;color:var(--muted)}.danger{border:0;border-radius:8px;padding:8px 11px;background:#fff0ee;color:#a52d20;cursor:pointer}.secondary{border:1px solid var(--line);background:white;color:var(--g);border-radius:9px;padding:9px 12px;cursor:pointer}
+@media(max-width:560px){.hero .book{display:none}.top{align-items:flex-start}.fields,.adminform{grid-template-columns:1fr}.fields textarea,.adminform .wide{grid-column:auto}.adminitem{align-items:flex-start}}
+</style></head>
+<body>
+<header><div class="top"><div class="brand"><div class="logo">📚</div><div><h1>مكتبة أولاد مرعي</h1><p class="tag">كل احتياجاتك المدرسية في مكان واحد</p></div></div>
+<div class="actions"><button class="headbtn" onclick="document.querySelector('#cart').scrollIntoView({behavior:'smooth'})">🛒 السلة (<span id="count">0</span>)</button><button class="headbtn" onclick="openAdmin()">⚙️ إدارة المكتبة</button></div></div>
+<div class="hero"><div><h2>أهلاً بيك في مكتبة أولاد مرعي</h2><p>اختار منتجاتك، ضيفها للسلة، وابعت طلبك بسهولة.</p></div><div class="book">✏️📒</div></div></header>
+<main>
+<div id="shop"><div class="tools"><input id="search" class="search" placeholder="ابحث عن منتج..." oninput="render()"></div><div class="filters" id="filters"></div>
+<div class="sectionhead"><h3>منتجات المكتبة</h3><span class="hint">أهلاً وسهلاً بيكم</span></div><div class="grid" id="products"></div>
+<section class="panel" id="cart"><h3>🛒 سلة المشتريات</h3><div id="cartitems" class="empty">السلة فاضية لسه. اختار المنتجات اللي محتاجها.</div><div class="total"><span>الإجمالي</span><span id="total">0 جنيه</span></div>
+<h3>بيانات توصيل الطلب</h3><div class="fields"><input id="customer" placeholder="اسم العميل"><input id="phone" inputmode="tel" placeholder="رقم الموبايل"><input id="address" placeholder="العنوان"><textarea id="notes" placeholder="ملاحظات إضافية (اختياري)"></textarea></div><p class="hint">اضغط إرسال الطلب لفتح واتساب برسالة جاهزة بالمشتريات والبيانات.</p><button class="send" onclick="sendOrder()">إرسال الطلب على واتساب</button></section></div>
+<section class="panel" id="admin"><div class="adminbar"><h3>⚙️ لوحة إدارة مكتبة أولاد مرعي</h3><button class="secondary" onclick="closeAdmin()">العودة للمتجر</button></div>
+<p class="hint">الأقسام جاهزة وفارغة. أضف منتجاتك بنفسك، وحدد القسم والسعر والصورة عند الإضافة.</p>
+<div class="adminform"><input id="pname" placeholder="اسم المنتج"><input id="pprice" type="number" min="0" placeholder="السعر بالجنيه"><select id="pcat"><option value="">اختر القسم</option></select><input id="picon" placeholder="رمز أو إيموجي للمنتج" value="📦"><input id="pimage" class="wide" placeholder="رابط صورة المنتج (اختياري)"><textarea id="pdesc" class="wide" placeholder="وصف مختصر (اختياري)"></textarea><button class="primary wide" onclick="saveProduct()">إضافة المنتج</button></div>
+<div class="adminlist" id="adminlist"></div>
+</section>
+</main><footer>© مكتبة أولاد مرعي — أهلاً وسهلاً بيكم</footer>
+<script>
+const WHATSAPP_NUMBER="201114108666";
+const CATEGORIES=["ألعاب","عيد ميلاد ومناسبات","هدايا","برفان","اكسسوارات وميكب","أدوات مكتبية","منتجات ورقية","كتب خارجية","كتب تأسيس"];
+let products=JSON.parse(localStorage.getItem("om_products")||"[]");
+let cart={},active="الكل",editId=null;
+let products=JSON.parse(localStorage.getItem("om_products")||"null")||DEFAULT_PRODUCTS;
+let cart={},active="الكل",editId=null;
+function persist(){localStorage.setItem("om_products",JSON.stringify(products))}
+function money(n){return Number(n).toLocaleString("ar-EG")+" جنيه"}
+function renderFilters(){let cats=["الكل",...CATEGORIES];if(!cats.includes(active))active="الكل";document.getElementById("filters").innerHTML=cats.map(c=>`<button class="filter ${active===c?'active':''}" onclick="active=${JSON.stringify(c)};renderFilters();render()">${c}</button>`).join("")}
+function render(){let q=document.getElementById("search").value.trim().toLowerCase();let list=products.filter(p=>(active==="الكل"||p.cat===active)&&(`${p.name} ${p.cat}`.toLowerCase().includes(q)));document.getElementById("products").innerHTML=list.map(p=>`<article class="product"><div class="pic">${p.image?`<img src="${esc(p.image)}" alt="">`:p.icon||"📦"}</div><h4>${esc(p.name)}</h4><p class="desc">${esc(p.desc||"")}</p><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">أضف للسلة</button></article>`).join("")||'<p class="empty">القسم ده لسه فاضي. المنتجات هتظهر هنا لما تضيفها من إدارة المكتبة.</p>';renderCart()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function add(id){cart[id]=(cart[id]||0)+1;renderCart()}
+function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];renderCart()}
+function renderCart(){let entries=Object.entries(cart),total=0,count=0;document.getElementById("cartitems").innerHTML=entries.length?entries.map(([id,qty])=>{let p=products.find(x=>x.id==id);if(!p)return "";total+=p.price*qty;count+=qty;return `<div class="cartrow"><div><b>${esc(p.name)}</b><div class="hint">${money(p.price)} × ${qty}</div></div><div class="qty"><button onclick="change(${id},-1)">−</button><b>${qty}</b><button onclick="change(${id},1)">+</button></div></div>`}).join(""):"السلة فاضية لسه. اختار المنتجات اللي محتاجها.";document.getElementById("count").textContent=count;document.getElementById("total").textContent=money(total)}
+function sendOrder(){let entries=Object.entries(cart);if(!entries.length)return alert("ضيف منتج واحد على الأقل للسلة.");let name=document.getElementById("customer").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim();if(!name||!phone||!address)return alert("من فضلك اكتب الاسم ورقم الموبايل والعنوان.");let total=0,lines=entries.map(([id,qty])=>{let p=products.find(x=>x.id==id);total+=p.price*qty;return `- ${p.name} × ${qty} = ${p.price*qty} جنيه`});let msg=`طلب جديد من موقع مكتبة أولاد مرعي\nالاسم: ${name}\nالموبايل: ${phone}\nالعنوان: ${address}\n\nالمنتجات:\n${lines.join("\n")}\n\nالإجمالي: ${total} جنيه\nملاحظات: ${document.getElementById("notes").value.trim()||"لا يوجد"}`;window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank")}
+function openAdmin(){let pass=prompt("اكتب كلمة مرور لوحة الإدارة:");if(pass!=="2468"){if(pass!==null)alert("كلمة المرور غير صحيحة.");return}document.getElementById("shop").style.display="none";document.getElementById("admin").style.display="block";renderAdmin();window.scrollTo(0,0)}
+function closeAdmin(){document.getElementById("admin").style.display="none";document.getElementById("shop").style.display="block";window.scrollTo(0,0)}
+function clearForm(){["pname","pprice","pcat","pimage","pdesc"].forEach(id=>document.getElementById(id).value="");document.getElementById("picon").value="📦";editId=null;document.querySelector(".adminform .primary").textContent="إضافة المنتج"}
+function saveProduct(){let name=document.getElementById("pname").value.trim(),price=Number(document.getElementById("pprice").value),cat=document.getElementById("pcat").value.trim();if(!name||!cat||document.getElementById("pprice").value===""||price<0)return alert("اكتب اسم المنتج والقسم والسعر بشكل صحيح.");let item={id:editId||Date.now(),name,price,cat,icon:document.getElementById("picon").value.trim()||"📦",image:document.getElementById("pimage").value.trim(),desc:document.getElementById("pdesc").value.trim()};if(editId){products=products.map(p=>p.id===editId?item:p)}else products.push(item);persist();clearForm();renderFilters();render();renderAdmin();alert("تم حفظ المنتج في هذا المتصفح.")}
+function renderAdmin(){document.getElementById("adminlist").innerHTML=products.map(p=>`<div class="adminitem"><div><b>${esc(p.name)}</b><small>${esc(p.cat)} · ${money(p.price)}</small></div><div style="display:flex;gap:6px"><button class="secondary" onclick="editProduct(${p.id})">تعديل</button><button class="danger" onclick="deleteProduct(${p.id})">حذف</button></div></div>`).join("")||'<p class="empty">لا توجد منتجات.</p>'}
+function editProduct(id){let p=products.find(x=>x.id===id);if(!p)return;editId=id;document.getElementById("pname").value=p.name;document.getElementById("pprice").value=p.price;document.getElementById("pcat").value=p.cat;document.getElementById("picon").value=p.icon||"📦";document.getElementById("pimage").value=p.image||"";document.getElementById("pdesc").value=p.desc||"";document.querySelector(".adminform .primary").textContent="حفظ التعديلات";window.scrollTo(0,0)}
+function deleteProduct(id){if(!confirm("متأكد إنك عايز تحذف المنتج؟"))return;products=products.filter(p=>p.id!==id);delete cart[id];persist();renderFilters();render();renderAdmin()}
+document.getElementById("pcat").innerHTML='<option value="">اختر القسم</option>'+CATEGORIES.map(c=>`<option value="${c}">${c}</option>`).join("");
+renderFilters();render();
+</script></body></html>
